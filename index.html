@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="menu.css">
+    <script src="index.js"></script>
+</head>
+<body>
+<header class="head">
+    <h1 class="head-title">FriendApp</h1>
+    <div class="head-search"><i class="fas fa-search icon icon-search"></i><input type="search" class="head-input-hidden"></div>
+    <div>
+        <button class="head-button head-input-hidden active"><i class="fas fa-sort icon"></i></button>
+        <button class="head-button head-input-hidden"><i class="fas fa-filter icon"></i></button>
+    </div>
+</header>
+<div class="menu" id="sort-menu">
+    <h2 class="menu-title">Sort</h2>
+    <form class="menu-button-container">
+        <button class="menu-button menu-button-sort active">
+            <i class="fas fa-angle-up"></i>
+            <i class="fas fa-angle-down icon-hidden"></i>
+            Name</button>
+        <button class="menu-button menu-button-sort">
+            <i class="fas fa-angle-up"></i>
+            <i class="fas fa-angle-down icon-hidden"></i>
+            Age</button>
+        <button class="menu-button menu-button-sort">
+            <i class="fas fa-angle-up"></i>
+            <i class="fas fa-angle-down icon-hidden"></i>
+            Registration date</button>
+        <button class="menu-button menu-button-submit" type="submit">Submit</button>
+    </form>
+</div>
+<div class="menu">
+    <h2 class="menu-title">Filter</h2>
+    <form class="menu-button-container">
+        <fieldset class="filter filter-age">
+            <legend class="filter-title">Age</legend>
+            <label class="filter-age-wrapper">From <input type="number"></label>
+            <label class="filter-age-wrapper">To <input type="number"></label>
+        </fieldset>
+        <fieldset class="filter filter-email">
+            <legend class="filter-title">Email</legend>
+            <select class="filter-select"></select>
+        </fieldset>
+        <fieldset class="filter filter-location">
+            <legend class="filter-title">Location</legend>
+            <select class="filter-select"> </select>
+        </fieldset>
+    </form>
+</div>
+<main></main>
+</body>
+</html>
