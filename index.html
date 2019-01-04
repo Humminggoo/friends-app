@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="card.css">
+    <link rel="stylesheet" href="range.css">
+    <script src="range-slider.js"></script>
     <script src="index.js"></script>
 </head>
 <body>
@@ -20,33 +23,47 @@
 </header>
 <div class="menu" id="sort-menu">
     <h2 class="menu-title">Sort</h2>
-    <form class="menu-button-container">
-        <button class="menu-button menu-button-sort active">
+    <div class="menu-button-container">
+        <button class="menu-button menu-button-sort active" name="nameAsc">
             <i class="fas fa-angle-up"></i>
             <i class="fas fa-angle-down icon-hidden"></i>
             Name</button>
-        <button class="menu-button menu-button-sort">
+        <button class="menu-button menu-button-sort" name="ageAsc">
             <i class="fas fa-angle-up"></i>
             <i class="fas fa-angle-down icon-hidden"></i>
             Age</button>
-        <button class="menu-button menu-button-sort">
+        <button class="menu-button menu-button-sort" name="dateAsc">
             <i class="fas fa-angle-up"></i>
             <i class="fas fa-angle-down icon-hidden"></i>
             Registration date</button>
-        <button class="menu-button menu-button-submit" type="submit">Submit</button>
-    </form>
+    </div>
+    <div class="menu-button-container">
+        <button class="menu-button menu-button-sort active" name="nameDesc">
+            <i class="fas fa-angle-down"></i>
+            Name</button>
+        <button class="menu-button menu-button-sort" name="ageDesc">
+            <i class="fas fa-angle-down"></i>
+            Age</button>
+        <button class="menu-button menu-button-sort" name="dateDesc">
+            <i class="fas fa-angle-down"></i>
+            Registration date</button>
+    </div>
 </div>
-<div class="menu">
+<div class="menu" id="filter-menu">
     <h2 class="menu-title">Filter</h2>
     <form class="menu-button-container">
         <fieldset class="filter filter-age">
             <legend class="filter-title">Age</legend>
-            <label class="filter-age-wrapper">From <input type="number"></label>
-            <label class="filter-age-wrapper">To <input type="number"></label>
+            <section class="range-slider">
+                <span class="rangeValues"></span>
+                <input value="1" min="0" max="100" step="1" type="range" id="minAge" class="custom-range">
+                <input value="100" min="0" max="100" step="1" type="range" id="maxAge" class="custom-range">
+            </section>
         </fieldset>
-        <fieldset class="filter filter-email">
-            <legend class="filter-title">Email</legend>
-            <select class="filter-select"></select>
+        <fieldset class="filter filter-gender">
+            <legend class="filter-title">Gender</legend>
+            <label><input type="radio" name="gender">Male</label>
+            <label><input type="radio" name="gender">Female</label>
         </fieldset>
         <fieldset class="filter filter-location">
             <legend class="filter-title">Location</legend>
@@ -54,6 +71,21 @@
         </fieldset>
     </form>
 </div>
-<main></main>
+<main class="card-wrapper" id="users">
+    <!--
+    <div class="card">
+        <img src="https://randomuser.me/api/portraits/med/women/86.jpg" class="card-photo">
+        <div class="card-text-wrapper">
+            <p class="card-text-big">Name</p>
+            <p class="card-text-medium">Age</p>
+            <p class="card-text-medium">Location</p>
+        </div>
+        <div class="card-contact-wrapper">
+            <p class="card-text-small">email</p>
+            <p class="card-text-small">phone</p>
+        </div>
+    </div>
+    -->
+</main>
 </body>
 </html>
