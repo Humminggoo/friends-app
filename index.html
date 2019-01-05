@@ -9,18 +9,18 @@
     <link rel="stylesheet" href="menu.css">
     <link rel="stylesheet" href="card.css">
     <link rel="stylesheet" href="range.css">
+    <link rel="stylesheet" href="radio-button.css">
+    <link rel="stylesheet" href="desktop.css" media="screen and (min-width:1000px)">
     <script src="range-slider.js"></script>
     <script src="index.js"></script>
 </head>
 <body>
 <header class="head">
     <h1 class="head-title">FriendApp</h1>
-    <div class="head-search"><i class="fas fa-search icon icon-search"></i><input type="search" class="head-input-hidden"></div>
-    <div>
-        <button class="head-button head-input-hidden active"><i class="fas fa-sort icon"></i></button>
-        <button class="head-button head-input-hidden"><i class="fas fa-filter icon"></i></button>
-    </div>
+    <div class="head-search"><i class="fas fa-search icon icon-search"></i>
+        <input type="search" class="head-input-hidden" id="nameSearch"></div>
 </header>
+<div class="menu-wrapper">
 <div class="menu" id="sort-menu">
     <h2 class="menu-title">Sort</h2>
     <div class="menu-button-container">
@@ -51,7 +51,7 @@
 </div>
 <div class="menu" id="filter-menu">
     <h2 class="menu-title">Filter</h2>
-    <form class="menu-button-container">
+    <div class="menu-button-container filter-menu">
         <fieldset class="filter filter-age">
             <legend class="filter-title">Age</legend>
             <section class="range-slider">
@@ -62,14 +62,19 @@
         </fieldset>
         <fieldset class="filter filter-gender">
             <legend class="filter-title">Gender</legend>
-            <label><input type="radio" name="gender">Male</label>
-            <label><input type="radio" name="gender">Female</label>
+            <div class="filter-gender-wrapper">
+                <input type="radio" name="gender" id="male" value="male">
+                <label class="filter-gender-label" for="male">Male</label>
+                <input type="radio" name="gender" id="female" value="female">
+                <label class="filter-gender-label" for="female">Female</label>
+            </div>
         </fieldset>
         <fieldset class="filter filter-location">
             <legend class="filter-title">Location</legend>
-            <select class="filter-select"> </select>
+                <input type="search" class="filter-location-field" id="locationSearch">
         </fieldset>
-    </form>
+    </div>
+</div>
 </div>
 <main class="card-wrapper" id="users">
     <!--
