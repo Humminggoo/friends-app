@@ -14,94 +14,93 @@ function FriendApp() {
 }
 FriendApp.prototype = {
     getUsers: function(){
-    const API_URL = "https://randomuser.me/api/?results=10";
-    fetch(API_URL)
-        .then(response => response.json())
-        .then(data => {
-            this.render(data.results);
-            this.data = data.results;
-            this.filteredData = this.data.slice();
-        });
-},
+        const API_URL = "https://randomuser.me/api/?results=10";
+        fetch(API_URL)
+            .then(response => response.json())
+            .then(data => {
+                this.data = data.results;
+                this.filteredData = this.data;
+                this.render(data.results);
+            });
+    },
     addListeners: function(){
         this.sortMenu.addEventListener('click', this.sort.bind(this));
-        this.sortMenu.addEventListener('change', this.filter.bind(this));
         this.filterMenu.addEventListener('change', this.filter.bind(this));
         this.searchBar.addEventListener('input', this.filter.bind(this));
         this.locationBar.addEventListener('input', this.filter.bind(this));
     },
- createCard: function(user, fragment) {
-    const card = document.createElement('div');
-    card.classList.add('card');
+    createCard: function(user, fragment) {
+        const card = document.createElement('div');
+        card.classList.add('card');
 
-    const cardPhoto = document.createElement('img');
-    cardPhoto.setAttribute('src', user.picture.medium);
-    cardPhoto.classList.add('card-photo');
+        const cardPhoto = document.createElement('img');
+        cardPhoto.setAttribute('src', user.picture.medium);
+        cardPhoto.classList.add('card-photo');
 
-    const cardText = document.createElement('div');
+        const cardText = document.createElement('div');
 
-    const cardName = document.createElement('p');
-    cardName.textContent = `${user.name.first} ${user.name.last}`;
-    cardName.classList.add('card-text-big');
+        const cardName = document.createElement('p');
+        cardName.textContent = `${user.name.first} ${user.name.last}`;
+        cardName.classList.add('card-text-big');
 
-    const cardAge = document.createElement('p');
-    cardAge.textContent = `Age: ${user.dob.age}`;
-    cardAge.classList.add('card-text-medium');
+        const cardAge = document.createElement('p');
+        cardAge.textContent = `Age: ${user.dob.age}`;
+        cardAge.classList.add('card-text-medium');
 
-    const cardCity = document.createElement('p');
-    cardCity.textContent = `City: ${user.location.city}`;
-    cardCity.classList.add('card-text-medium');
+        const cardCity = document.createElement('p');
+        cardCity.textContent = `City: ${user.location.city}`;
+        cardCity.classList.add('card-text-medium');
 
-    cardText.classList.add('card-text-wrapper');
-    cardText.appendChild(cardName);
-    cardText.appendChild(cardAge);
-    cardText.appendChild(cardCity);
+        cardText.classList.add('card-text-wrapper');
+        cardText.appendChild(cardName);
+        cardText.appendChild(cardAge);
+        cardText.appendChild(cardCity);
 
-    const cardContact = document.createElement('div');
-    const cardEmail = document.createElement('p');
-    cardEmail.textContent = user.email;
-    cardEmail.classList.add('card-text-small');
+        const cardContact = document.createElement('div');
+        const cardEmail = document.createElement('p');
+        cardEmail.textContent = user.email;
+        cardEmail.classList.add('card-text-small');
 
-    const cardPhone = document.createElement('p');
-    cardPhone.textContent = user.phone;
-    cardPhone.classList.add('card-text-small');
+        const cardPhone = document.createElement('p');
+        cardPhone.textContent = user.phone;
+        cardPhone.classList.add('card-text-small');
 
-    cardContact.classList.add('card-contact-wrapper');
-    cardContact.appendChild(cardEmail);
-    cardContact.appendChild(cardPhone);
+        cardContact.classList.add('card-contact-wrapper');
+        cardContact.appendChild(cardEmail);
+        cardContact.appendChild(cardPhone);
 
-    card.appendChild(cardPhoto);
-    card.appendChild(cardText);
-    card.appendChild(cardContact);
+        card.appendChild(cardPhoto);
+        card.appendChild(cardText);
+        card.appendChild(cardContact);
 
-    fragment.appendChild(card);
-},
+        fragment.appendChild(card);
+    },
     update: function(newData){
         this.render(newData);
     },
     render: function(users){
-    const frag = document.createDocumentFragment();
-    this.userContainer.innerHTML = '';
-    users.forEach( user => this.createCard(user, frag));
-    this.userContainer.appendChild(frag);
-},
+        const frag = document.createDocumentFragment();
+        this.userContainer.innerHTML = '';
+        users.forEach( user => this.createCard(user, frag));
+        this.userContainer.appendChild(frag);
+    },
     sort: function(e){
         switch (e.target.getAttribute('name')) {
             case "nameDesc":
-                this.data.sort((a, b) => (b.name.first > a.name.first ? 1 : -1));
+                this.filteredData.sort((a, b) => (b.name.first > a.name.first ? 1 : -1));
                 break;
             case "nameAsc":
-                this.data.sort((a, b) => (b.name.first < a.name.first ? 1 : -1));
+                this.filteredData.sort((a, b) => (b.name.first < a.name.first ? 1 : -1));
                 break;
             case "ageDesc":
-                this.data.sort((a, b) => (b.dob.age > a.dob.age ? 1 : -1));
+                this.filteredData.sort((a, b) => (b.dob.age > a.dob.age ? 1 : -1));
                 break;
             case "ageAsc":
-                this.data.sort((a, b) => (b.dob.age < a.dob.age ? 1 : -1));
+                this.filteredData.sort((a, b) => (b.dob.age < a.dob.age ? 1 : -1));
                 break;
         }
-        this.sortMenu.dispatchEvent(new Event('change'));
-},
+        this.update(this.filteredData);
+    },
     filter: function (e) {
         switch (e.target.id) {
             case "minAge":
