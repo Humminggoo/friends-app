@@ -1,11 +1,11 @@
 .menu{
-    position: absolute;
-    overflow: hidden;
     width: 100%;
     padding: 15px;
-    top: -200px;
+    /*top: -200px;
+    position: absolute;
+    overflow: hidden;
     z-index: -10;
-    transition: top .7s ease-in;
+    transition: top .7s ease-in;*/
 }
 .menu.active{
     top: 100px;
@@ -21,7 +21,7 @@
     flex-wrap: wrap;
 }
 .menu-button{
-    height: 64px;
+    height: 48px;
     width: 33%;
     border: none;
     border-radius: 16px;
@@ -56,16 +56,16 @@
 .filter{
     width: 30%;
 }
-.filter-age, .filter-select{
+.filter-select{
     border: 1px solid #A5A2A9;
     border-radius: 5px;
 }
-.filter-age-wrapper{
+.filter-gender-wrapper{
     display: flex;
     justify-content: space-between;
 }
-.filter-age-wrapper > input{
-    width: 80%;
+.filter-gender-label{
+    font-size: 20px;
 }
 .filter-title{
     font-size: 18px;
@@ -76,4 +76,9 @@
 }
 .filter-age-wrapper, .filter-title, .filter-select{
     padding: 5px;
+}
+.filter-location-field{
+    border: 1px solid #A5A2A9;
+    border-radius: 10px;
+    height: 25px;
 }

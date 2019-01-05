@@ -1,7 +1,7 @@
 .head{
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: #0BC469;
     height: 80px;
 }
@@ -9,6 +9,7 @@
     font-family: 'Lobster', cursive;
     font-size: 36px;
     color: #FFFFFF;
+    padding-left: 10px;
 }
 .head-search{
     display: flex;
@@ -17,6 +18,7 @@
     padding: 10px;
     border-radius: 25px;
     height: 48px;
+    margin-right: 10px;
 }
 .head-input-hidden{
     border: none;
