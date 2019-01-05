@@ -20,8 +20,7 @@ FriendApp.prototype = {
         .then(data => {
             this.render(data.results);
             this.data = data.results;
-            this.filteredData = this.data;
-            console.log(this.data);
+            this.filteredData = this.data.slice();
         });
 },
     addListeners: function(){
@@ -78,7 +77,6 @@ FriendApp.prototype = {
     fragment.appendChild(card);
 },
     update: function(newData){
-        console.log(newData);
         this.render(newData);
     },
     render: function(users){
@@ -88,7 +86,6 @@ FriendApp.prototype = {
     this.userContainer.appendChild(frag);
 },
     sort: function(e){
-        console.log(e.target);
         switch (e.target.getAttribute('name')) {
             case "nameDesc":
                 this.data.sort((a, b) => (b.name.first > a.name.first ? 1 : -1));
@@ -101,12 +98,6 @@ FriendApp.prototype = {
                 break;
             case "ageAsc":
                 this.data.sort((a, b) => (b.dob.age < a.dob.age ? 1 : -1));
-                break;
-            case "dateDesc":
-                this.data.sort((a, b) => (Date.parse(b.registered.date) > Date.parse(a.registered.date) ? 1 : -1));
-                break;
-            case "dateAsc":
-                this.data.sort((a, b) => (Date.parse(b.registered.date) < Date.parse(a.registered.date) ? 1 : -1));
                 break;
         }
         this.sortMenu.dispatchEvent(new Event('change'));
@@ -136,4 +127,4 @@ FriendApp.prototype = {
         }
         this.update(this.filteredData);
     }
-}
+};

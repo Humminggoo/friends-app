@@ -22,7 +22,7 @@
 }
 .menu-button{
     height: 48px;
-    width: 33%;
+    width: 46%;
     border: none;
     border-radius: 16px;
     font-size: 1em;
@@ -36,18 +36,6 @@
     box-shadow: inset 0px 0px 11px 1px rgba(11,196,105,1);
     color: #0BC469;
     background-color: #FFFFFF;
-}
-.menu-button.active{
-    color: #FFFFFF;
-    background-color: #0BC469;
-}
-.menu-button-submit{
-    color: #FFFFFF;
-    background-color: #0BC469;
-    font-size: 20px;
-    width: 20%;
-    margin: 10px;
-    margin-left: auto;
 }
 .fa-angle-up, .fa-angle-down{
     font-size: 40px;
